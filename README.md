@@ -2,6 +2,6 @@
 
 Dedicated repo for storing my talk slides.
 
-# Slides list
+### Slides list
 
 Still WIP, hang tight :)
