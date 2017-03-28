@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to Git</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css?family=Inconsolata');
+      @import url('https://fonts.googleapis.com/css?family=Raleway');
+      body { font-family: 'Raleway'; }
+      h1, h2, h3 {
+        font-family: 'Raleway';
+        font-weight: bold;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Inconsolata'; }
+    </style>
+  </head>
+  <body onload="var slideshow = remark.create();">
+    <script src="remark.min.js"></script>
+    <script>
+      remark.macros.scale = function (percentage) {
+        var url = this;
+        return '<img src="' + url + '" style="width: ' + percentage + '" />';
+      };
+      var presentation = remark.create({
+        sourceUrl: 'slides.md',
+        highlightStyle: 'github',
+        highlightSpans: true,
+        highlightLanguage: 'html'
+      })
+    </script>
+  </body>
+</html>
