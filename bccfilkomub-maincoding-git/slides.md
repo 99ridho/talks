@@ -246,9 +246,100 @@ Each branch has different commit history, and one repository can have one or mor
 
 ---
 
-Branching ilustration
+Branching ilustration (credit to: nvie.com)
 
 .center[![:scale 60%](http://nvie.com/img/git-model@2x.png)]
+
+---
+
+# Branching (contd.)
+
+Assume our commit graph look like below (`*` active branch was `master`)
+
+```
+                      *master
+                         |
+-->(c1)-->(c2)-->(c3)-->(c4)
+
+```
+
+To create new branch, use this command:
+
+```
+$ git branch (new_branch_name)
+```
+
+For example, we're going to create new `develop` branch
+
+```
+$ git branch develop
+```
+
+And now our commit graph look like below
+
+```
+                      *master
+                         |
+-->(c1)-->(c2)-->(c3)-->(c4)
+                         |
+                      develop
+
+```
+
+
+
+---
+
+# Branching (contd.)
+
+Then we're going to checkout to `develop` branch
+
+```
+$ git checkout develop
+```
+
+Now active branch changed to `develop`.
+
+```
+                       master
+                         |
+-->(c1)-->(c2)-->(c3)-->(c4)
+                         |
+                      *develop
+```
+
+If we're create new commit named `c5`, now our commit graph look like below
+
+```
+                       master
+                         |
+-->(c1)-->(c2)-->(c3)-->(c4)-->(c5)
+                                |
+                             *develop
+```
+
+---
+
+# Branching (contd.)
+
+If we're checkout `master` branch, then we're create new commit named `c6`, our commit graph look like below
+
+```
+                          *master
+                             |
+                         -->(c6)
+                         |
+-->(c1)-->(c2)-->(c3)-->(c4)-->(c5)
+                                |
+                              develop
+```
+
+So, commit history per branch as follows
+
+```
+master  : c1, c2, c3, c4, c6
+develop : c1, c2, c3, c4, c5
+```
 
 ---
 
