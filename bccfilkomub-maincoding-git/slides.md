@@ -164,8 +164,6 @@ origin	https://github.com/99ridho/talks.git (push)
 
 ---
 
-# Managing Remote Repositories (contd.)
-
 #### Adding Remote Repository
 
 Command :
@@ -203,6 +201,24 @@ $ git add -i
 ```
 
 This command is used to add changed/untracked file to staging area interactively.
+
+---
+
+# Reverting Changes
+
+Since Git is version control system, we're possible to revert our file to certain commit.
+
+There are 3 different type of revert:
+
+* `--soft` : The staged snapshot and working directory are not altered in any way.
+* `--mixed` : The staged snapshot is updated to match the specified commit, but the working directory is not affected. This is the default option.
+* `--hard` : The staged snapshot and the working directory are both updated to match the specified commit.
+
+Command :
+
+```
+$ git reset (type) (commit_hash) 
+```
 
 ---
 
@@ -252,8 +268,6 @@ Branching ilustration (credit to: nvie.com)
 
 ---
 
-# Branching (contd.)
-
 Assume our commit graph look like below (`*` active branch was `master`)
 
 ```
@@ -290,8 +304,6 @@ And now our commit graph look like below
 
 ---
 
-# Branching (contd.)
-
 Then we're going to checkout to `develop` branch
 
 ```
@@ -320,8 +332,6 @@ If we're create new commit named `c5`, now our commit graph look like below
 
 ---
 
-# Branching (contd.)
-
 If we're checkout `master` branch, then we're create new commit named `c6`, our commit graph look like below
 
 ```
@@ -343,4 +353,139 @@ develop : c1, c2, c3, c4, c5
 
 ---
 
-# To be available soon...
+# Merge
+
+Commonly used to merge branches, merging PRs, merge new feature to `master`, etc..
+
+Typically, there are 2 different type of merging
+
+* Fast-forward merge
+* Merge with merge commit
+
+.center[![:scale 50%](http://nvie.com/img/merge-without-ff@2x.png)]
+
+---
+
+But, I like to merging branches with merge commit, to retain actual branching history :D
+
+```
+master  : -->(c1)-->(c2)-->(c3)-->(c4)-->(c6)-------------->(c10)
+                                   |                         ^
+                                   |                         |
+develop :                          -->(c5)-->(c7)-->(c8)-->(c9)
+
+
+c10 are merge commit from develop, to master
+```
+
+This situation can be achieved by using this command
+
+```
+$ git checkout master
+$ git merge --no-ff develop
+```
+
+---
+
+class: center, middle
+
+# Resolving Conflicts
+
+---
+
+# Conflict causes
+
+Case study :
+
+Our repo, consist of 2 files, a.txt and b.txt. And, we have 2 different branches, called master and develop. There are 2 contributors, me and John.
+
+* I modify a.txt at line number 1, then I commit my changes at master branch.
+
+* John create a new branch, so called dev branch, then modify a.txt at line number 1, then commit his changes at dev branch.
+
+* Then I modify a.txt at line number 1 for the second time, then I commit my changes at master branch.
+
+* Okay, then I like to merge dev branch to my master branch.
+
+* Then, merging failed cause by conflicts.
+
+
+---
+
+# Let's reproduce the conflicts
+
+```
+// pwd at learn-git repo
+
+touch file.txt
+echo "hello world" > file.txt
+git add .
+git commit -m "init 1st commit at master"
+git checkout -b other_branch
+echo "this file altered at other branch" > file.txt
+git add .
+git commit -m "first commit at ob"
+git checkout master
+echo "this file altered again at master" > file.txt
+git add .
+git commit -m "2nd commit at master"
+git merge --no-ff other_branch
+```
+
+You'll get an error message
+
+```
+Auto-merging file.txt
+CONFLICT (content): Merge conflict in file.txt
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+---
+
+And your txt will look like this
+
+```diff
+<<<<<<< HEAD
+this file altered again at master
+=======
+this file altered at other branch
+>>>>>>> other_branch
+```
+
+---
+
+# How to solve that conflict?
+
+Use `git mergetool` to resolve our conflict, or resolve the conflict by hand.
+
+```diff
+<<<<<<< HEAD
+this file altered again at master
+=======
+this file altered at other branch
+>>>>>>> other_branch
+```
+
+Which changes you'll to apply? It depends to your need :)
+
+After resolving the conflict, for example I applied changes from `other_branch`
+
+```
+this file altered at other branch
+```
+
+Commit your changes.
+
+```
+$ git commit
+```
+
+Conflict resolving has been completed :D
+
+---
+
+class: center, middle
+
+# Thank You :)
+
+any questions?
