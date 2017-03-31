@@ -35,7 +35,75 @@ $ git config --global user.email="your_email"
 
 ---
 
-# Let's init our repo!
+class: center, middle
+
+# The Three Trees of Git
+
+... these trees are different collections of files ...
+
+---
+
+# HEAD
+
+* Pointer to current branch
+* Parent of your next commit
+* Or.. Snapshot of your last commit
+
+--
+
+# Index
+
+* Snapshot of your next commit
+* Running `git add` command will stage your file to index, then ready to commit
+
+--
+
+# Working Directory
+
+* Sandbox
+* This is where the content of files are placed into actual files on your filesystem
+* Used to change your file easily
+
+---
+
+class: middle
+
+```
+        +-----------------+     +-----------------+    +-----------------+
+        |                 |     |                 |    |                 |
+        |     HEAD        |     |    INDEX        |    |    WORKING      |
+        |                 |     |                 |    |    DIRECTORY    |
+        |                 |     |                 |    |                 |
+        +--------+--------+     +--------+--------+    +--------+--------+
+                |                       |                      |
+                |                       |                      |
+                +--------------------------------------------->+
+                |                       |   Checkout           |
+                |                       |                      |
+                |                       |                      |
+                |                       |                      |
+                |                       |                      |
+                |                       +<---------------------+
+                |                       |     Stage files      |
+                |                       |                      |
+                +<----------------------+                      |
+                |      Commit changes   |                      |
+                |                       |                      |
+                |                       |                      |
+                |                       |                      |
+                +                       +                      +
+
+```
+
+---
+
+class: center, middle
+
+# Git Key Commands
+
+---
+
+# Let's init our repo first!
 
 Type this commands...
 
@@ -50,12 +118,6 @@ For example, you'll get this message after initialize new Git repository
 ```
 Initialized empty Git repository in /Users/ridho/code/learn-git/.git/
 ```
-
----
-
-class: center, middle
-
-# Git Key Commands
 
 ---
 
