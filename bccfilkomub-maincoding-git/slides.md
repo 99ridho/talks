@@ -12,6 +12,15 @@ main coding BCC 2017
 - Developed by Linus Torvalds
 - Distributed
 
+--
+
+# Why we're use Git
+
+- Versioning our files
+- Easy to track file changes
+- Easy to collaborate
+- etc...
+
 ---
 
 # Before we start
