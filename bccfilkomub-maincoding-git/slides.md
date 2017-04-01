@@ -52,7 +52,7 @@ class: center, middle
 
 ---
 
-# HEAD
+## HEAD
 
 * Pointer to current branch
 * Parent of your next commit
@@ -60,14 +60,14 @@ class: center, middle
 
 --
 
-# Index
+## Index
 
 * Snapshot of your next commit
 * Running `git add` command will stage your file to index, then ready to commit
 
 --
 
-# Working Directory
+## Working Directory
 
 * Sandbox
 * This is where the content of files are placed into actual files on your filesystem
