@@ -16,4 +16,10 @@ Introduction to Git, Main Coding BCC FILKOM UB 2017, 01-04-17
 
 ---
 
+Architecting iOS Apps with MVVM + RxSwift, Facebook Developer Circle: Malang, ??-05-17
+
+[https://99ridho.github.io/talks/devc-mlg-mvvm/#/](https://99ridho.github.io/talks/devc-mlg-mvvm/#/)
+
+---
+
 next slide (tba)
